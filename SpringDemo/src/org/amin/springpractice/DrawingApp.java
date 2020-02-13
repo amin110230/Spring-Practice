@@ -17,7 +17,7 @@ public class DrawingApp {
 //		Triangle triangle =  (Triangle) factory.getBean("triangle");
 //		triangle.draw();
 		
-//		ApplicationContext [is a big brother of BeanFactory] and Property Initialization
+//		ApplicationContext [is a big brother of BeanFactory] and Property Initialization, xml will in class path [src]
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
 //		Triangle triangle = (Triangle) applicationContext.getBean("triangle");
 //		using alias
