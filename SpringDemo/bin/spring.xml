@@ -4,6 +4,33 @@
 	<!--blue print for the object-->
 <beans>
 	<bean id="triangle" class="org.amin.springpractice.Triangle">
-		<property name="type" value="Equilateral"></property>
+		<!-- setter injection -->
+		<!-- <property name="type" value="Equilateral"></property> -->
+		
+		<!-- although you comment out the setType setter [constructor injection]  -->
+		<!-- type="int" type="java.lang.String" -->
+		<!-- <constructor-arg value="Equilateral"></constructor-arg> -->
+		<!-- <constructor-arg type="java.lang.String" value="20"></constructor-arg> -->
+		<!-- <constructor-arg index="0" value="Equilateral"></constructor-arg> --> 
+		<!-- <constructor-arg index="1" value="20"></constructor-arg> -->
+		<!-- Object Injection -->
+		<property name="pointA" ref="zeroPoint"></property>
+		<property name="pointB" ref="point2"></property>
+		<property name="pointC" ref="point3"></property>
+	</bean>
+	
+	<bean id="zeroPoint" class="org.amin.springpractice.Point">
+		<property name="x" value="0"></property>
+		<property name="y" value="0"></property>
+	</bean>
+	
+	<bean id="point2" class="org.amin.springpractice.Point">
+		<property name="x" value="-20"></property>
+		<property name="y" value="0"></property>
+	</bean>
+	
+	<bean id="point3" class="org.amin.springpractice.Point">
+		<property name="x" value="20"></property>
+		<property name="y" value="0"></property>
 	</bean>
 </beans>
