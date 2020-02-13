@@ -21,11 +21,13 @@ public class DrawingApp {
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
 //		Triangle triangle = (Triangle) applicationContext.getBean("triangle");
 //		using alias
-		Triangle triangle = (Triangle) applicationContext.getBean("triangle-alias");
-		triangle.draw();
+//		Triangle triangle = (Triangle) applicationContext.getBean("triangle-alias");
+//		triangle.draw();
 		
 		
 //		 Injecting Objects
+		Triangle triangle = (Triangle) applicationContext.getBean("triangle");
+		triangle.draw();
 		
 		
 		
