@@ -180,7 +180,7 @@
 		<property name="y" value="0"></property>
 	</bean>
 	 -->
-	 
+	 <!-- 
 	<bean id="triangle" class="org.amin.springpractice.Triangle">
 		<property name="pointA" ref="pointA"></property>
 		<property name="pointB" ref="pointB"></property>
@@ -199,11 +199,39 @@
 		<property name="x" value="20"></property>
 		<property name="y" value="0"></property>
 	</bean>
-	
+	 -->
 	<!-- <bean class="org.amin.springpractice.DisplayNameBeanPostProcessor"></bean> -->
 	<!-- <bean class="org.amin.springpractice.MyBeanFactoryPP"></bean> -->
 	<!-- PropertyPlaceholderConfigurer -->
+	<!-- 
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations" value="pointsconfig.properties"></property>
+	</bean>
+	 -->
+	 
+	 <!-- Coding To Interfaces -->
+	<bean id="triangle" class="org.amin.springpractice.Triangle" >
+		<property name="pointA" ref="pointA"></property>
+		<property name="pointB" ref="pointB"></property>
+		<property name="pointC" ref="pointC"></property>
+	</bean>
+	 
+	<bean id="pointA" class="org.amin.springpractice.Point">
+		<property name="x" value="0"></property>
+		<property name="y" value="0"></property>
+	</bean>
+	
+	<bean id="pointB" class="org.amin.springpractice.Point">
+		<property name="x" value="-20"></property>
+		<property name="y" value="0"></property>
+	</bean>
+	
+	<bean id="pointC" class="org.amin.springpractice.Point">
+		<property name="x" value="20"></property>
+		<property name="y" value="0"></property>
+	</bean>
+	
+	<bean id="circle" class="org.amin.springpractice.Circle" >
+		<property name="center" ref="pointA"></property>
 	</bean>
 </beans>

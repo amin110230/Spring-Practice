@@ -200,6 +200,7 @@ public class Triangle {
 	}
 	
 	public void draw() {
+		System.out.println("Drawing Triangle");
 		System.out.println("Point A = (" + getPointA().getX() + ", " + getPointA().getY() + ")");
 		System.out.println("Point B = (" + getPointB().getX() + ", " + getPointB().getY() + ")");
 		System.out.println("Point C = (" + getPointC().getX() + ", " + getPointC().getY() + ")");
@@ -215,11 +216,11 @@ public class Triangle {
 //		System.out.println("DisposableBean distroy method called for Triangle");		
 //	}
 	
-	public void myInit() {
-		System.out.println("My init method called for Triangle");
-	}
-	public void cleanUp() {
-		System.out.println("My cleanUp method called for Triangle");
-	}
+//	public void myInit() {
+//		System.out.println("My init method called for Triangle");
+//	}
+//	public void cleanUp() {
+//		System.out.println("My cleanUp method called for Triangle");
+//	}
 	
 }

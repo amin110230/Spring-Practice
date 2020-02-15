@@ -51,6 +51,13 @@ public class DrawingApp {
 		Triangle triangle = (Triangle) applicationContext.getBean("triangle");
 		triangle.draw();
 		
+//		Coding To Interfaces
+//		Circle circle = (Circle) applicationContext.getBean("circle");
+//		circle.draw();
+		Shape shape = (Shape) applicationContext.getBean("circle");
+		shape.draw();
+		
+		
 	}
 
 }
