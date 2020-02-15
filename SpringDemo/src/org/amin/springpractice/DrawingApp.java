@@ -26,8 +26,8 @@ public class DrawingApp {
 		
 		
 //		 Injecting Objects
-		Triangle triangle = (Triangle) applicationContext.getBean("triangle");
-		triangle.draw();
+//		Triangle triangle = (Triangle) applicationContext.getBean("triangle");
+//		triangle.draw();
 		
 //		 Bean Scopes
 //		Singleton => Only once per Spring container
@@ -39,7 +39,10 @@ public class DrawingApp {
 //		Global Session => New bean per global HTTP session (portlet context)
 		
 		
-		
+
+//		Bean Definition Inheritance
+		Triangle triangle = (Triangle) applicationContext.getBean("triangle1");
+		triangle.draw();
 		
 		
 	}

@@ -87,6 +87,7 @@
 	<!-- Bean Autowiring [autowire checks for member variables byName, byType for only one member variable, constructor for different types member variables] -->
 	<!--  <bean id="triangle" class="org.amin.springpractice.Triangle" autowire="byName">  -->
 	<!--  <bean id="triangle" class="org.amin.springpractice.Triangle" scope="prototype">  -->
+	<!-- 
 	<bean id="triangle" class="org.amin.springpractice.Triangle" autowire="byName">
 
 	</bean>
@@ -105,5 +106,52 @@
 		<property name="x" value="20"></property>
 		<property name="y" value="0"></property>
 	</bean>
-
+	 -->
+	 
+	<!-- Bean Definition Inheritance -->
+	<!-- 
+	<bean id="parenttriangle" class="org.amin.springpractice.Triangle">
+		<property name="pointA" ref="pointA"></property>
+	</bean>
+	
+	<bean id="triangle1" class="org.amin.springpractice.Triangle" parent="parenttriangle">
+		<property name="pointB" ref="pointB"></property>
+		<property name="pointC" ref="pointC"></property>
+	</bean>
+	 -->
+	<!-- if you want to use as a templete but not initialize then use abstract="true" -->
+	<bean id="parenttriangle" class="org.amin.springpractice.Triangle" abstract="true">
+		<property name="points">
+			<list>
+				<ref bean="pointA"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="triangle1" class="org.amin.springpractice.Triangle" parent="parenttriangle">
+		<property name="points">
+			<list merge="true">
+				<ref bean="pointB"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="triangle2" class="org.amin.springpractice.Triangle" parent="parenttriangle">
+	</bean>
+	 
+	<bean id="pointA" class="org.amin.springpractice.Point">
+		<property name="x" value="0"></property>
+		<property name="y" value="0"></property>
+	</bean>
+	
+	<bean id="pointB" class="org.amin.springpractice.Point">
+		<property name="x" value="-20"></property>
+		<property name="y" value="0"></property>
+	</bean>
+	
+	<bean id="pointC" class="org.amin.springpractice.Point">
+		<property name="x" value="20"></property>
+		<property name="y" value="0"></property>
+	</bean>
+	
 </beans>
