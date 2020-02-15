@@ -29,6 +29,15 @@ public class DrawingApp {
 		Triangle triangle = (Triangle) applicationContext.getBean("triangle");
 		triangle.draw();
 		
+//		 Bean Scopes
+//		Singleton => Only once per Spring container
+//		Prototype => New bean created with every request or reference
+		
+//		Web-aware Context Bean Scopes
+//		request => New bean per servlet request
+//		Session => New bean per session
+//		Global Session => New bean per global HTTP session (portlet context)
+		
 		
 		
 		

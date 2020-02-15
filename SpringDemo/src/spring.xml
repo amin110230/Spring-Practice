@@ -86,6 +86,7 @@
 	
 	<!-- Bean Autowiring [autowire checks for member variables byName, byType for only one member variable, constructor for different types member variables] -->
 	<!--  <bean id="triangle" class="org.amin.springpractice.Triangle" autowire="byName">  -->
+	<!--  <bean id="triangle" class="org.amin.springpractice.Triangle" scope="prototype">  -->
 	<bean id="triangle" class="org.amin.springpractice.Triangle">
 
 	</bean>
