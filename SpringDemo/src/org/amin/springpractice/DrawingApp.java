@@ -3,6 +3,7 @@ package org.amin.springpractice;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.FileSystemResource;
 
@@ -18,7 +19,7 @@ public class DrawingApp {
 //		triangle.draw();
 		
 //		ApplicationContext [is a big brother of BeanFactory] and Property Initialization, xml will in class path [src]
-		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
+//		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
 //		Triangle triangle = (Triangle) applicationContext.getBean("triangle");
 //		using alias
 //		Triangle triangle = (Triangle) applicationContext.getBean("triangle-alias");
@@ -41,9 +42,14 @@ public class DrawingApp {
 		
 
 //		Bean Definition Inheritance
-		Triangle triangle = (Triangle) applicationContext.getBean("triangle1");
-		triangle.draw();
+//		Triangle triangle = (Triangle) applicationContext.getBean("triangle1");
+//		triangle.draw();
 		
+//		Lifecycle Callbacks
+		AbstractApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
+		applicationContext.registerShutdownHook();
+		Triangle triangle = (Triangle) applicationContext.getBean("triangle");
+		triangle.draw();
 		
 	}
 

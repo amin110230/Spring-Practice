@@ -2,7 +2,8 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd" >
 
 	<!--blue print for the object-->
-<beans>
+	<!-- we can also call init and destroy/cleanup in global beans -->
+<beans default-init-method="myInit" default-destroy-method="cleanUp">
 	<!-- <bean id="triangle" class="org.amin.springpractice.Triangle" name="triangle-name"> -->
 		<!-- setter injection -->
 		<!-- <property name="type" value="Equilateral"></property> -->
@@ -120,6 +121,7 @@
 	</bean>
 	 -->
 	<!-- if you want to use as a templete but not initialize then use abstract="true" -->
+	<!--
 	<bean id="parenttriangle" class="org.amin.springpractice.Triangle" abstract="true">
 		<property name="points">
 			<list>
@@ -153,5 +155,26 @@
 		<property name="x" value="20"></property>
 		<property name="y" value="0"></property>
 	</bean>
+	-->
 	
+	<!-- Lifecycle Callbacks -->
+	<!-- <bean id="triangle" class="org.amin.springpractice.Triangle" autowire="byName" init-method="myInit" destroy-method="cleanUp"> -->
+	<bean id="triangle" class="org.amin.springpractice.Triangle" autowire="byName" >
+
+	</bean>
+	 
+	<bean id="pointA" class="org.amin.springpractice.Point">
+		<property name="x" value="0"></property>
+		<property name="y" value="0"></property>
+	</bean>
+	
+	<bean id="pointB" class="org.amin.springpractice.Point">
+		<property name="x" value="-20"></property>
+		<property name="y" value="0"></property>
+	</bean>
+	
+	<bean id="pointC" class="org.amin.springpractice.Point">
+		<property name="x" value="20"></property>
+		<property name="y" value="0"></property>
+	</bean>
 </beans>
