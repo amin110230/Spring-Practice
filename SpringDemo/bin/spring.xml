@@ -188,8 +188,8 @@
 	</bean>	
 		 
 	<bean id="pointA" class="org.amin.springpractice.Point">
-		<property name="x" value="0"></property>
-		<property name="y" value="0"></property>
+		<property name="x" value="${pointA.pointX}"></property>
+		<property name="y" value="${pointA.pointY}"></property>
 	</bean>
 	<bean id="pointB" class="org.amin.springpractice.Point">
 		<property name="x" value="-20"></property>
@@ -200,5 +200,10 @@
 		<property name="y" value="0"></property>
 	</bean>
 	
-	<bean class="org.amin.springpractice.DisplayNameBeanPostProcessor"></bean>
+	<!-- <bean class="org.amin.springpractice.DisplayNameBeanPostProcessor"></bean> -->
+	<!-- <bean class="org.amin.springpractice.MyBeanFactoryPP"></bean> -->
+	<!-- PropertyPlaceholderConfigurer -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations" value="pointsconfig.properties"></property>
+	</bean>
 </beans>

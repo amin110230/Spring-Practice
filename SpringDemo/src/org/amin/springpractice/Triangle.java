@@ -166,8 +166,8 @@ import org.springframework.context.ApplicationContextAware;
 	
 //}
 //Lifecycle Callbacks
-public class Triangle implements InitializingBean, DisposableBean {
-//public class Triangle {
+//public class Triangle implements InitializingBean, DisposableBean {
+public class Triangle {
 //	Lifecycle Callbacks
 	private Point pointA;
 	private Point pointB;
@@ -205,15 +205,15 @@ public class Triangle implements InitializingBean, DisposableBean {
 		System.out.println("Point C = (" + getPointC().getX() + ", " + getPointC().getY() + ")");
 	}
 
-	@Override
-	public void afterPropertiesSet() throws Exception {
-		System.out.println("InitializingBean init method called for Triangle");		
-	}
-
-	@Override
-	public void destroy() throws Exception {
-		System.out.println("DisposableBean distroy method called for Triangle");		
-	}
+//	@Override
+//	public void afterPropertiesSet() throws Exception {
+//		System.out.println("InitializingBean init method called for Triangle");		
+//	}
+//
+//	@Override
+//	public void destroy() throws Exception {
+//		System.out.println("DisposableBean distroy method called for Triangle");		
+//	}
 	
 	public void myInit() {
 		System.out.println("My init method called for Triangle");
