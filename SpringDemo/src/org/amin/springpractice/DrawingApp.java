@@ -48,8 +48,8 @@ public class DrawingApp {
 //		Lifecycle Callbacks
 		AbstractApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
 		applicationContext.registerShutdownHook();
-		Triangle triangle = (Triangle) applicationContext.getBean("triangle");
-		triangle.draw();
+//		Triangle triangle = (Triangle) applicationContext.getBean("triangle");
+//		triangle.draw();
 		
 //		Coding To Interfaces
 //		Circle circle = (Circle) applicationContext.getBean("circle");
