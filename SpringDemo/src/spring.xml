@@ -230,7 +230,7 @@
 	</bean> -->
 	
 	<bean id="pointA" class="org.amin.springpractice.Point">
-		<qualifier value="circleRelated" />
+		<!-- <qualifier value="circleRelated" /> -->
 		<property name="x" value="0"></property>
 		<property name="y" value="0"></property>
 	</bean>
@@ -246,7 +246,7 @@
 	</bean>
 	
 	<bean id="circle" class="org.amin.springpractice.Circle" >
-		<!-- <property name="center" ref="pointA"></property> -->
+		<property name="center" ref="pointA"></property>
 	</bean>
 	
 	<!-- Coding to Required Annotation [checking for the annotations] -->
