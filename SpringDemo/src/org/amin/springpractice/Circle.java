@@ -5,6 +5,7 @@ import javax.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Required;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
@@ -19,7 +20,17 @@ import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 public class Circle implements Shape {
 	
 	private Point center;
+	@Autowired
+	private MessageSource messageSource;
 	
+	public MessageSource getMessageSource() {
+		return messageSource;
+	}
+
+	public void setMessageSource(MessageSource messageSource) {
+		this.messageSource = messageSource;
+	}
+
 	public Point getCenter() {
 		return center;
 	}
@@ -38,8 +49,15 @@ public class Circle implements Shape {
 	
 	@Override
 	public void draw() {
-		System.out.println("Drawing Circle");
-		System.out.println("Circle: Point is: (" + getCenter().getX() + ", " + getCenter().getY() + ")");		
+//		System.out.println("Drawing Circle");
+		System.out.println(this.messageSource.getMessage("drawing.circle", null, "Default Drawing Greeting", null));
+//		internationalization for Message Source
+		System.out.println(this.messageSource.getMessage("drawing.point", new Object[] {center.getX(), center.getY()}, "Default Point Greeting", null));
+//		System.out.println("Circle: Point is: (" + getCenter().getX() + ", " + getCenter().getY() + ")");
+		// from MessageSource : access message source in all our bean to need member variable messageSource and 
+		// do dependency injection by type using auto wire and spring.xml we would have define the message source
+		// and given it a property file name to pick up and give us text as we set the key in property file
+//		System.out.println(this.messageSource.getMessage("greeting", null, "Default Greeting", null));
 	}
 	
 	@PostConstruct //JSR-250 Annotations

@@ -258,14 +258,23 @@
 	<!-- <bean id="circle" class="org.amin.springpractice.Circle" >
 	</bean> -->
 	
-	<!-- we need to ask spring to scan through all our classes what annotations are classes are bean -->
-	<context:component-scan base-package="org.amin.springpractice" />
 	
 	<!-- Coding to Required Annotation [checking for the annotations] -->
 	<!-- <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"></bean> -->
 	
 	<!-- Coding to Autowired Annotation [checking for the Autowired annotations] -->
 	<!-- <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"></bean> -->
+	
+	<!-- message source helps us to pick messages out of property files -->
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>mymessages</value>
+			</list>
+		</property>
+	</bean>
 	<!-- shortcut for all Bean Annotation BeanPostProcessor tags -->
 	<context:annotation-config/>
+	<!-- we need to ask spring to scan through all our classes what annotations are classes are bean -->
+	<context:component-scan base-package="org.amin.springpractice" />
 </beans>
