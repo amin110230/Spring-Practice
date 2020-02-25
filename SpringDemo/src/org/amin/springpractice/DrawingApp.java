@@ -57,6 +57,11 @@ public class DrawingApp {
 		Shape shape = (Shape) applicationContext.getBean("circle");
 		shape.draw();
 //		System.out.println(applicationContext.getMessage("greeting", null, "Default Greeting", null));
+//		Event Handling consist 3 core components
+//		1. Event Publisher [the entity who publishes the event]
+//		2. Event Listener [the entity who listens to the event]
+//		3. The Event itself [the Class contains information about event] 
+		
 		
 	}
 

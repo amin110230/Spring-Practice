@@ -52,6 +52,7 @@ public class Circle implements Shape {
 //		System.out.println("Drawing Circle");
 		System.out.println(this.messageSource.getMessage("drawing.circle", null, "Default Drawing Greeting", null));
 //		internationalization for Message Source
+//		explore how can use locale argument 
 		System.out.println(this.messageSource.getMessage("drawing.point", new Object[] {center.getX(), center.getY()}, "Default Point Greeting", null));
 //		System.out.println("Circle: Point is: (" + getCenter().getX() + ", " + getCenter().getY() + ")");
 		// from MessageSource : access message source in all our bean to need member variable messageSource and 
