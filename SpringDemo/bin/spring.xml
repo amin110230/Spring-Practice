@@ -251,9 +251,15 @@
 		<property name="y" value="20"></property>
 	</bean>
 	
-	<bean id="circle" class="org.amin.springpractice.Circle" >
-		<!-- <property name="center" ref="pointA"></property> -->
-	</bean>
+	<!-- <bean id="circle" class="org.amin.springpractice.Circle" >
+		<property name="center" ref="pointA"></property>
+	</bean> -->
+	
+	<!-- <bean id="circle" class="org.amin.springpractice.Circle" >
+	</bean> -->
+	
+	<!-- we need to ask spring to scan through all our classes what annotations are classes are bean -->
+	<context:component-scan base-package="org.amin.springpractice" />
 	
 	<!-- Coding to Required Annotation [checking for the annotations] -->
 	<!-- <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"></bean> -->

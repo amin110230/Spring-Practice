@@ -5,8 +5,17 @@ import javax.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Required;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 
+@Component // Circle class to be a bean as circle
+// Stereotype Annotations annotations  says you what role the bean is doing
+//@Service // as a service bean
+//@Repository // as a data object
+//@Controller // as a MVC pattern implemanation for our view
 public class Circle implements Shape {
 	
 	private Point center;
