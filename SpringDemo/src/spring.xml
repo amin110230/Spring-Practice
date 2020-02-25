@@ -245,8 +245,14 @@
 		<property name="y" value="0"></property>
 	</bean>
 	
+	
+	<bean id="center" class="org.amin.springpractice.Point">
+		<property name="x" value="20"></property>
+		<property name="y" value="20"></property>
+	</bean>
+	
 	<bean id="circle" class="org.amin.springpractice.Circle" >
-		<property name="center" ref="pointA"></property>
+		<!-- <property name="center" ref="pointA"></property> -->
 	</bean>
 	
 	<!-- Coding to Required Annotation [checking for the annotations] -->
