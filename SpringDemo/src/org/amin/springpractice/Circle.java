@@ -5,6 +5,8 @@ import javax.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Required;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.context.ApplicationEventPublisherAware;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
@@ -17,7 +19,7 @@ import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 //@Service // as a service bean
 //@Repository // as a data object
 //@Controller // as a MVC pattern implemanation for our view
-public class Circle implements Shape {
+public class Circle implements Shape, ApplicationEventPublisherAware {
 	
 	private Point center;
 	@Autowired
@@ -34,6 +36,9 @@ public class Circle implements Shape {
 	public Point getCenter() {
 		return center;
 	}
+	
+	// in order to publish
+	private ApplicationEventPublisher publisher; // to handle getter setter we have to implement ApplicationEventPublisherAware Interface
 	
 //	Annotation
 	@Required
@@ -59,6 +64,9 @@ public class Circle implements Shape {
 		// do dependency injection by type using auto wire and spring.xml we would have define the message source
 		// and given it a property file name to pick up and give us text as we set the key in property file
 //		System.out.println(this.messageSource.getMessage("greeting", null, "Default Greeting", null));
+//		Publishing the event of DrawEvent [in order to publish we need a publisher as ApplicationEventPublisher Interface]
+		DrawEvent drawEvent = new DrawEvent(this);
+		publisher.publishEvent(drawEvent);
 	}
 	
 	@PostConstruct //JSR-250 Annotations
@@ -71,6 +79,11 @@ public class Circle implements Shape {
 	public void destroyCircle() {
 		// executed before circle bean has been initialized
 		System.out.println("Destroy of Circle");
+	}
+
+	@Override
+	public void setApplicationEventPublisher(ApplicationEventPublisher publisher) {
+		this.publisher = publisher;		
 	}
 
 }
