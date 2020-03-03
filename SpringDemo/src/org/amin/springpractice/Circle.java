@@ -1,6 +1,6 @@
 package org.amin.springpractice;
 
-import javax.annotation.Resource; //JSR-250 Annotations
+import javax.annotation.Resource; //JSR-250 Annotations [working for JavaSE-1.8/jre1.8.1_71]
 import javax.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -46,8 +46,8 @@ public class Circle implements Shape, ApplicationEventPublisherAware {
 //	@Autowired
 //	@Qualifier("circleRelated")
 //	JSR-250 [Java Specification Request] Standard Annotations
-//	@Resource(name="pointC") // JSR-250 Annotations
-	@Resource // looks for the bean same name as mumber variable [center] 
+//	@Resource(name="pointC") // JSR-250 Annotations [***working for JavaSE-1.8/jre1.8.1_71]
+	@Resource // looks for the bean same name as mumber variable [center] [***working for JavaSE-1.8/jre1.8.1_71]
 	public void setCenter(Point center) {
 		this.center = center;
 	}
