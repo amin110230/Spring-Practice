@@ -251,9 +251,9 @@
 		<property name="y" value="20"></property>
 	</bean>
 	
-	<!-- <bean id="circle" class="org.amin.springpractice.Circle" >
+	<bean id="circle" class="org.amin.springpractice.Circle" >
 		<property name="center" ref="pointA"></property>
-	</bean> -->
+	</bean>
 	
 	<!-- <bean id="circle" class="org.amin.springpractice.Circle" >
 	</bean> -->

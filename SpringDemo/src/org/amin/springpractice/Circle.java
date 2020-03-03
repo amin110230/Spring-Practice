@@ -1,6 +1,6 @@
 package org.amin.springpractice;
 
-import javax.annotation.Resource; //JSR-250 Annotations [working for JavaSE-1.8/jre1.8.1_71]
+//import javax.annotation.Resource; //JSR-250 Annotations [working for JavaSE-1.8/jre1.8.1_71]
 import javax.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -47,7 +47,7 @@ public class Circle implements Shape, ApplicationEventPublisherAware {
 //	@Qualifier("circleRelated")
 //	JSR-250 [Java Specification Request] Standard Annotations
 //	@Resource(name="pointC") // JSR-250 Annotations [***working for JavaSE-1.8/jre1.8.1_71]
-	@Resource // looks for the bean same name as mumber variable [center] [***working for JavaSE-1.8/jre1.8.1_71]
+//	@Resource // looks for the bean same name as mumber variable [center] [***working for JavaSE-1.8/jre1.8.1_71]
 	public void setCenter(Point center) {
 		this.center = center;
 	}
@@ -69,13 +69,13 @@ public class Circle implements Shape, ApplicationEventPublisherAware {
 		publisher.publishEvent(drawEvent);
 	}
 	
-	@PostConstruct //JSR-250 Annotations
+//	@PostConstruct //JSR-250 Annotations
 	public void initializeCircle() {
 		// executed after circle bean has been initialized
 		System.out.println("Init for Circle");
 	}
 	
-	@PreDestroy //JSR-250 Annotations
+//	@PreDestroy //JSR-250 Annotations
 	public void destroyCircle() {
 		// executed before circle bean has been initialized
 		System.out.println("Destroy of Circle");
