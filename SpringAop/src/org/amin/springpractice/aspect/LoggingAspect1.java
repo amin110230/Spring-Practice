@@ -12,6 +12,7 @@ public class LoggingAspect1 { // not working for class name LoggingAspect
 //		System.out.println("Advice run. Get Method called");
 //	}
 	
+//	execution means methods
 //	for specific class method
 //	@Before("execution(public String org.amin.springpractice.model.Triangle.getName())")  
 //	public void LoggingAdvice2( ) {
@@ -24,7 +25,8 @@ public class LoggingAspect1 { // not working for class name LoggingAspect
 	// * get*(..) is for it can be zero argument or any number of arguments  
 //	@Before("execution(* org.amin.springpractice.model.*.get*())")    // all classes inside the model package then method starts with the get
 //	@Before("execution(public * get*())")
-	@Before("allGetters()")
+//	@Before("allGetters()")
+	@Before("allGetters() && allCircleMethods()")
 	public void LoggingAdvice2() {
 		System.out.println("Advice run. Get Method called in WildCard mode");
 	}
@@ -43,4 +45,16 @@ public class LoggingAspect1 { // not working for class name LoggingAspect
 	@Pointcut("execution(* get*())") // point cut applied to allGetters()
 //	i have defined this pointer over here so i don't have to use ["execution(* get*())"] expression everywhere i want an advice to get applied
 	public void allGetters() {} // annotated dummy method holds point cut expression
+	
+//	@Pointcut("execution(* org.amin.springpractice.model.Circle.*(..))")
+//	within means methods
+	@Pointcut("within(org.amin.springpractice.model.Circle)") //all methods of with in class
+//	@Pointcut("within(org.amin.springpractice.model.*)") //all methods of with in all classes of model package
+//	@Pointcut("within(org.amin.springpractice.model..*)") //all methods of with in all classes of model package and its sub packages
+	public void allCircleMethods() {}
+	
+//	args takes arguments as class, interface
+//	@Pointcut(args())
+	
+	
 }
