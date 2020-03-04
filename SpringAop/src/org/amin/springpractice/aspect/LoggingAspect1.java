@@ -75,7 +75,7 @@ public class LoggingAspect1 { // not working for class name LoggingAspect
 //		System.out.println("A method that takes String arguments has been called");
 //	}
 	
-	@Before("args(name)")
+	@Before("args(name)") // the argument that passed the target method, the same argument needs to passed to the advice [as name]
 	public void stringArgumentMethods(String name) {
 		System.out.println("A method that takes String arguments has been called. The value is " + name);
 	}
