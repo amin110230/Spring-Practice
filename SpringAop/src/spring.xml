@@ -6,7 +6,10 @@
 		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
 				http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
 				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
-
+	
+	<!-- to run aop in place -->
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+	
 	<bean name="triangle" class="org.amin.springpractice.model.Triangle">
 		<property name="name" value="Triangle name" />
 	</bean>
@@ -17,4 +20,7 @@
 	
 	<bean name="shapeService" class="org.amin.springpractice.service.ShapeService" autowire="byName"> <!-- autowire shortcut for member variable -->
 	</bean>
+	
+	<bean name="loggingAspect1" class="org.amin.springpractice.aspect.LoggingAspect1" />
+	
 </beans>
