@@ -149,4 +149,10 @@ public class LoggingAspect1 { // not working for class name LoggingAspect
 	
 //	Naming Convention
 //	@Pointcut("execution(* org.amin.springpractice.service.*Service.*(..)")
+	
+	
+	public void loggingAdvice() {
+		System.out.println("Logging from the advice");
+
+	}
 }

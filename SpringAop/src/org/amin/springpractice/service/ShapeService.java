@@ -10,6 +10,7 @@ public class ShapeService {
 	
 	@Loggable // Loggable annotation and loggable advice will applicable for this method 
 	public Circle getCircle() {
+		System.out.println("Circle getter called");
 		return circle;
 	}
 	public void setCircle(Circle circle) {
