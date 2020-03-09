@@ -31,4 +31,14 @@
 	
 	<bean name="loggingAspect1" class="org.amin.springpractice.aspect.LoggingAspect1" />
 	
+	<!-- instead of a class annotated as an aspect [@Aspect] -->
+	<aop:config>
+		<aop:aspect id="loggingAspect1" ref="loggingAspect1"> <!-- this line is equals to @Aspect annotation in LoggingAspect1 class -->
+			<!-- <aop:pointcut id="allGetters" expression="execution(* get*())"/>  --> <!-- this line for pointcut for allGetters() and its expression in LoggingAspect1 class -->
+			<!-- <aop:around pointcut-ref="allGetters" method="myAroundAdvice"/> --> <!-- method executed for allGetters expression pointcut -->
+			<aop:around pointcut="execution(* get*())" method="myAroundAdvice"/> <!-- here does not need <aop:pointcut> tag -->
+			
+		</aop:aspect>
+	</aop:config>
+	
 </beans>

@@ -11,7 +11,8 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 
-@Aspect // annotation that converts class to aspect, methods becomes advice 
+// remove @Aspect to configure this in xml <aop:config> <aop:aspect>
+//@Aspect // annotation that converts class to aspect, methods becomes advice 
 public class LoggingAspect1 { // not working for class name LoggingAspect
 //	Aspect is a class with addition annotations
 //	@Before("execution(public String getName())") // i want LoggingAdvice to run before execution of [public String getName()] method  
@@ -64,16 +65,16 @@ public class LoggingAspect1 { // not working for class name LoggingAspect
 //	@Pointcut(args())
 	
 
-	@Before("allCircleMethods()")
+//	@Before("allCircleMethods()")
 //	JoinPoint hold info about the method actually triggered
 //	JoinPoint means all the places in your code where you can apply advice
 //	In Spring JoinPoint = method, In AspectJ JoinPoint = method, variable 
-	public void LoggingAdvice2(JoinPoint joinPoint) {
+//	public void LoggingAdvice2(JoinPoint joinPoint) {
 //		System.out.println("Advice run. Get Method called");
 //		System.out.println(joinPoint.toString());
 //		System.out.println(joinPoint.getTarget()); // joinPoint.getTarget() return object
 //		Circle circle = (Circle) joinPoint.getTarget();
-	}	
+//	}	
 	
 //	@Before("args(String)")
 //	public void stringArgumentMethods() {
@@ -85,11 +86,12 @@ public class LoggingAspect1 { // not working for class name LoggingAspect
 //		System.out.println("A method that takes String arguments has been called. The value is " + name);
 //	}
 	
-	@Pointcut("execution(* get*())")
-	public void allGetters() {}
+//	removed for configuration in xml to set aop:pointcut in aop:aspect
+//	@Pointcut("execution(* get*())")
+//	public void allGetters() {}
 	
-	@Pointcut("within(org.amin.springpractice.model.Circle)")
-	public void allCircleMethods() {}
+//	@Pointcut("within(org.amin.springpractice.model.Circle)")
+//	public void allCircleMethods() {}
 	
 //	@After("args(name)") // the argument that passed the target method, the same argument needs to passed to the advice [as name]
 //	public void stringArgumentMethods(String name) {
@@ -103,11 +105,11 @@ public class LoggingAspect1 { // not working for class name LoggingAspect
 //		System.out.println("A method that takes String arguments has been called. The value is " + name);
 //	}
 	
-	@AfterReturning(pointcut="args(name)", returning="returnString") // the argument that passed the target method, the same argument needs to passed to the advice [as name]
-	public void stringArgumentMethods(String name, String returnString) {
-		// telling to spring the input type and output type, passing arguments to advice
-		System.out.println("A method that takes String arguments has been called. The value is " + name + " The output value is " + returnString);
-	}
+//	@AfterReturning(pointcut="args(name)", returning="returnString") // the argument that passed the target method, the same argument needs to passed to the advice [as name]
+//	public void stringArgumentMethods(String name, String returnString) {
+//		// telling to spring the input type and output type, passing arguments to advice
+//		System.out.println("A method that takes String arguments has been called. The value is " + name + " The output value is " + returnString);
+//	}
 	
 //	if i want an advice method to get executed on an exception
 //	if any exception thrown in target method
@@ -116,18 +118,18 @@ public class LoggingAspect1 { // not working for class name LoggingAspect
 //		System.out.println("An exception has been thrown");
 //	}
 	
-	@AfterThrowing(pointcut="args(name)", throwing="ex")
+//	@AfterThrowing(pointcut="args(name)", throwing="ex")
 //	public void exceptionAdvice(String name, RuntimeException ex) {
 //		// telling to spring this @AfterThrowing to catch all methods that matches the pointcut expression and then they are throwing a runtime exception [catches only runtime exception]
 //		System.out.println("An exception has been thrown " + ex);
 //	}
-	public void exceptionAdvice(String name, Exception ex) {
-		// telling to spring this @AfterThrowing to catch all methods that matches the pointcut expression and then they are throwing an exception
-		System.out.println("An exception has been thrown " + ex);
-	}
+//	public void exceptionAdvice(String name, Exception ex) {
+//		// telling to spring this @AfterThrowing to catch all methods that matches the pointcut expression and then they are throwing an exception
+//		System.out.println("An exception has been thrown " + ex);
+//	}
 
-	@Around("@annotation(org.amin.springpractice.aspect.Loggable)")
-//	@Around("allGetters()")
+//	@Around("@annotation(org.amin.springpractice.aspect.Loggable)")
+//	@Around("allGetters()") // removed because have been configured in xml 
 //	advice has to take compulsory argument called ProceedingJoinPoint
 //	need two things, one is use ProceedingJoinPoint and another is call proceed() in advice
 	public Object myAroundAdvice(ProceedingJoinPoint proceedingJoinPoint) {
