@@ -21,7 +21,8 @@
 		<property name="name" value="Triangle name" />
 	</bean>
 	<bean name="circle" class="org.amin.springpractice.model.Circle">
-		<property name="name" value="Circle name" />
+		<!-- i don't want initialize when got ant exception -->
+		<!-- <property name="name" value="Circle name" /> -->
 	</bean>
 	
 	

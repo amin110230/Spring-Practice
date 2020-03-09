@@ -2,6 +2,9 @@ package org.amin.springpractice.aspect;
 
 import org.amin.springpractice.model.Circle;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -75,10 +78,10 @@ public class LoggingAspect1 { // not working for class name LoggingAspect
 //		System.out.println("A method that takes String arguments has been called");
 //	}
 	
-	@Before("args(name)") // the argument that passed the target method, the same argument needs to passed to the advice [as name]
-	public void stringArgumentMethods(String name) {
-		System.out.println("A method that takes String arguments has been called. The value is " + name);
-	}
+//	@Before("args(name)") // the argument that passed the target method, the same argument needs to passed to the advice [as name]
+//	public void stringArgumentMethods(String name) {
+//		System.out.println("A method that takes String arguments has been called. The value is " + name);
+//	}
 	
 	@Pointcut("execution(* get*())")
 	public void allGetters() {}
@@ -86,4 +89,38 @@ public class LoggingAspect1 { // not working for class name LoggingAspect
 	@Pointcut("within(org.amin.springpractice.model.Circle)")
 	public void allCircleMethods() {}
 	
+//	@After("args(name)") // the argument that passed the target method, the same argument needs to passed to the advice [as name]
+//	public void stringArgumentMethods(String name) {
+//		// it runs when target method [setName(name)] execute successfully or not
+//		System.out.println("A method that takes String arguments has been called. The value is " + name);
+//	}
+	
+//	@AfterReturning("args(name)") // the argument that passed the target method, the same argument needs to passed to the advice [as name]
+//	public void stringArgumentMethods(String name) {
+//		// it runs when target method [setName(name)] execute successfully [there is no exception occured]
+//		System.out.println("A method that takes String arguments has been called. The value is " + name);
+//	}
+	
+	@AfterReturning(pointcut="args(name)", returning="returnString") // the argument that passed the target method, the same argument needs to passed to the advice [as name]
+	public void stringArgumentMethods(String name, String returnString) {
+		// telling to spring the input type and output type, passing arguments to advice
+		System.out.println("A method that takes String arguments has been called. The value is " + name + " The output value is " + returnString);
+	}
+	
+//	if i want an advice method to get executed on an exception
+//	if any exception thrown in target method
+//	@AfterThrowing("args(name)")
+//	public void exceptionAdvice(String name) {
+//		System.out.println("An exception has been thrown");
+//	}
+	
+	@AfterThrowing(pointcut="args(name)", throwing="ex")
+//	public void exceptionAdvice(String name, RuntimeException ex) {
+//		// telling to spring this @AfterThrowing to catch all methods that matches the pointcut expression and then they are throwing a runtime exception [catches only runtime exception]
+//		System.out.println("An exception has been thrown " + ex);
+//	}
+	public void exceptionAdvice(String name, Exception ex) {
+		// telling to spring this @AfterThrowing to catch all methods that matches the pointcut expression and then they are throwing an exception
+		System.out.println("An exception has been thrown " + ex);
+	}
 }
