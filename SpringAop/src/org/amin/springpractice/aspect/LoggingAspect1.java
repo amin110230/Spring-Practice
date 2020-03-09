@@ -2,9 +2,11 @@ package org.amin.springpractice.aspect;
 
 import org.amin.springpractice.model.Circle;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -122,5 +124,23 @@ public class LoggingAspect1 { // not working for class name LoggingAspect
 	public void exceptionAdvice(String name, Exception ex) {
 		// telling to spring this @AfterThrowing to catch all methods that matches the pointcut expression and then they are throwing an exception
 		System.out.println("An exception has been thrown " + ex);
+	}
+	
+	@Around("allGetters()")
+//	advice has to take compulsory argument called ProceedingJoinPoint
+//	need two things, one is use ProceedingJoinPoint and another is call proceed() in advice
+	public Object myAroundAdvice(ProceedingJoinPoint proceedingJoinPoint) {
+		// advice return type should be same as target method return type
+		Object returnValue = null;
+		try {
+			System.out.println("Before advice");
+			returnValue = proceedingJoinPoint.proceed(); // target method executed by this line
+			System.out.println("After Returning");
+		} catch (Throwable e) {
+			System.out.println("After Throwing");
+		}
+		
+		System.out.println("After Finally");
+		return returnValue;
 	}
 }

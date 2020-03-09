@@ -17,8 +17,9 @@ public class AopMain {
 //		System.out.println(shapeService.getCircle().getName());
 		
 //		shapeService.getTriangle().setName("Dummy Triangle");
-		shapeService.getCircle().setName("Dummay Circle");
+//		shapeService.getCircle().setName("Dummay Circle");
 //		shapeService.getCircle().setNameandReturn("Dummay Circle");
+		shapeService.getCircle();
 	}
 
 }
