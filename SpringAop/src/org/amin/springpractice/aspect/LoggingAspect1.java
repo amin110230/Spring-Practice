@@ -125,8 +125,9 @@ public class LoggingAspect1 { // not working for class name LoggingAspect
 		// telling to spring this @AfterThrowing to catch all methods that matches the pointcut expression and then they are throwing an exception
 		System.out.println("An exception has been thrown " + ex);
 	}
-	
-	@Around("allGetters()")
+
+	@Around("@annotation(org.amin.springpractice.aspect.Loggable)")
+//	@Around("allGetters()")
 //	advice has to take compulsory argument called ProceedingJoinPoint
 //	need two things, one is use ProceedingJoinPoint and another is call proceed() in advice
 	public Object myAroundAdvice(ProceedingJoinPoint proceedingJoinPoint) {
@@ -143,4 +144,7 @@ public class LoggingAspect1 { // not working for class name LoggingAspect
 		System.out.println("After Finally");
 		return returnValue;
 	}
+	
+//	Naming Convention
+//	@Pointcut("execution(* org.amin.springpractice.service.*Service.*(..)")
 }

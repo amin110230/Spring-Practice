@@ -19,7 +19,7 @@ public class AopMain {
 //		shapeService.getTriangle().setName("Dummy Triangle");
 //		shapeService.getCircle().setName("Dummay Circle");
 //		shapeService.getCircle().setNameandReturn("Dummay Circle");
-		shapeService.getCircle();
+		shapeService.getCircle(); // it run only for Loggable annotations
 	}
 
 }
