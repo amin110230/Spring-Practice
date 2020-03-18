@@ -14,9 +14,24 @@ public class JdbcDaoImpl {
 		Connection conn = null;
 		
 		try {
+			
+//			Set environment variable DERBY_HOME = C:\Users\Dohatec\OneDrive\Documents\spring lib\spring data support\db-derby-10.8.2.2-bin\db-derby-10.8.2.2-bin 
+//			and Path = $DERBY_HOME\bin
+
+//			go $DERBY_HOME\bin directory and run startNetworkServer.bat in windows and will shows message as below
+//			Security manager installed using the Basic server security policy.
+//			Apache Derby Network Server - 10.8.2.2 - (1181258) started and ready to accept connections on port 1527
+			
+//			go $DERBY_HOME\bin directory and run ij.bat in windows
+			
+//			connect 'jdbc:derby://localhost:1527/derby_db;create=true';
+//			Create circle table if not exist
+//			CREATE TABLE circle (id integer, name char(50));
+//			SELECT * FROM circle
+//			INSERT into circle values(3, 'Third Circle');
 
 			String driver = "org.apache.derby.jdbc.ClientDriver";
-//			Class.forName(driver).newInstance();
+			Class.forName(driver).newInstance();
 			conn = DriverManager.getConnection("jdbc:derby://localhost:1527/derby_db");
 			PreparedStatement ps = conn.prepareStatement("SELECT * FROM circle where id = ?");
 			ps.setInt(1, circleId);
@@ -27,7 +42,7 @@ public class JdbcDaoImpl {
 				circle = new Circle(circleId, rs.getString("name"));
 			}
 			rs.close();
-			ps.cancel();
+			ps.close();
 			return circle;
 		} catch (Exception e) {
 			throw new RuntimeException(e);
