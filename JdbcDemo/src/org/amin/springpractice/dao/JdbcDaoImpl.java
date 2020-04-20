@@ -16,7 +16,7 @@ public class JdbcDaoImpl {
 		try {
 
 			String driver = "org.apache.derby.jdbc.ClientDriver";
-//			Class.forName(driver).newInstance();
+			Class.forName(driver).newInstance();
 			conn = DriverManager.getConnection("jdbc:derby://localhost:1527/derby_db");
 			PreparedStatement ps = conn.prepareStatement("SELECT * FROM circle where id = ?");
 			ps.setInt(1, circleId);
